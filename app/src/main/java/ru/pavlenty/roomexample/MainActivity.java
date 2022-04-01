@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        getTasks();
     }
 
 
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(List<Task> tasks) {
                 super.onPostExecute(tasks);
                 TaskAdapter adapter = new TaskAdapter(MainActivity.this, tasks);
-
+                recyclerView.setAdapter(adapter);
             }
         }
         GetTasks gt = new GetTasks();
