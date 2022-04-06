@@ -41,27 +41,30 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getTasks() {
-        class GetTasks extends AsyncTask<Void, Void, List<Task>> {
+      //  class GetTasks extends AsyncTask<Void, Void, List<Task>> {
 
-            @Override
-            protected List<Task> doInBackground(Void... voids) {
-                List<Task> taskList = DBClient
-                        .getInstance(getApplicationContext())
-                        .getAppDatabase()
-                        .taskDao()
-                        .getAll();
-                return taskList;
-            }
+        //    @Override
+          //  protected List<Task> doInBackground(Void... voids) {
 
-            @Override
-            protected void onPostExecute(List<Task> tasks) {
-                super.onPostExecute(tasks);
-                TaskAdapter adapter = new TaskAdapter(MainActivity.this, tasks);
-                recyclerView.setAdapter(adapter);
-            }
-        }
-        GetTasks gt = new GetTasks();
-        gt.execute();
+            List<Task> taskList = DBClient
+                    .getInstance(getApplicationContext())
+                    .getAppDatabase()
+                    .taskDao()
+                    .getAll();
+            TaskAdapter adapter = new TaskAdapter(MainActivity.this, taskList);
+            recyclerView.setAdapter(adapter);
+
+            //    return taskList;
+            //}
+
+            //@Override
+            //protected void onPostExecute(List<Task> tasks) {
+              //  super.onPostExecute(tasks);
+
+            //}
+        //}
+        //GetTasks gt = new GetTasks();
+        //gt.execute();
     }
 
 }
